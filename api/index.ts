@@ -7,11 +7,9 @@ module.exports = async (req, res) => {
   try {
     console.log({ reqQuery: req.query });
     console.log({ QueryURL: req.query.url });
-    const file = await getScreenshot(
-      `${req.query.url}&${req.query.nounSet}`,
-      req.query.width,
-      req.query.height
-    );
+    let url = encodeURI(`${req.query.url}&${req.query.nounSet}`);
+    console.log({ url });
+    const file = await getScreenshot(url, req.query.width, req.query.height);
     res.setHeader("Content-Type", "image/png");
     res.setHeader(
       "Cache-Control",
