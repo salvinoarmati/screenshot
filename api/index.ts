@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
   try {
     console.log({ QueryURL: req.query.url });
     const file = await getScreenshot(
-      req.query.url,
+      `${req.query.url}&${req.query.nounSet}`,
       req.query.width,
       req.query.height
     );
