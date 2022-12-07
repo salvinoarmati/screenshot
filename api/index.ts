@@ -5,6 +5,7 @@ module.exports = async (req, res) => {
   if (!checkUrl(req.query.url))
     return res.status(400).send("Invalid url query specified.");
   try {
+    console.log({ reqQuery: req.query });
     console.log({ QueryURL: req.query.url });
     const file = await getScreenshot(
       `${req.query.url}&${req.query.nounSet}`,
